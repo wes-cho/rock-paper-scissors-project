@@ -1,10 +1,9 @@
 let choices = ['rock', 'paper', 'scissors'];
 
-let userInput = prompt('What do you choose?').toLowerCase();
-while (userInput != choices[0] || choices[1] || choices [2]){
-    let userInput = prompt('Invalid input. Choose rock, paper, or scissors.');
+let userInput = prompt('What do you choose?');
+while (userInput !== 'rock' && userInput !== 'scissors' && userInput !== 'paper'){
+    userInput = prompt('Invalid input. Choose rock, paper, or scissors.')
 }
-console.log(userInput);
 
 function getComputerChoice(){
     return choices[Math.floor(Math.random() * choices.length)];
@@ -22,9 +21,7 @@ function playRound(playerSelection, computerSelection) {
         }
 }
 
-const playerSelection = 'rock';
-const computerSelection = getComputerChoice();
 
-console.log (playRound(playerSelection, computerSelection));
-
-//
+//const playerSelection = 'rock';
+//const computerSelection = getComputerChoice();
+//console.log (playRound(playerSelection, computerSelection));
