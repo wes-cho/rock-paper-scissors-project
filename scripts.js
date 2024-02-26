@@ -52,7 +52,5 @@ function playGame(){
         console.log(`You lost to the computer! You scored ${playerScore} and the computer scored ${computerScore}.`)
     }
 }
-    
-//const playerSelection = 'rock';
-//const computerSelection = getComputerChoice();
-//console.log (playRound(playerSelection, computerSelection));
+
+playGame()
