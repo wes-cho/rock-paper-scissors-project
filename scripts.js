@@ -16,41 +16,103 @@ function playRound(playerSelection, computerSelection) {
         }
 }
 
-function playGame(){
-    //initialize score counter
-    let playerScore = 0;
-    let computerScore = 0;
+let scoreContainer = document.createElement("div");
+scoreContainer.textContent = "Score"
+buttons.appendChild(scoreContainer);
 
-    //until the playerScore or cpuScore reaches 5:
-    while(playerScore < 5 && computerScore < 5){
-        //get user input & transform to lower case for later comparison
-        let userInput = prompt('What do you choose?').toLowerCase();
+let playerScore = document.createElement("p");
+let cpuScore = document.createElement("p");
 
-        //ensure user input is a valid choice
-        while (userInput !== 'rock' && userInput !== 'scissors' && userInput !== 'paper'){
-            userInput = prompt('Invalid input. Choose rock, paper, or scissors.')
-        }
-        
-        //play a single round of the game
-        winLossString = playRound(userInput, getComputerChoice());
-        if (winLossString.includes('win') === true){
-            playerScore++;
-            console.log(winLossString)
-        } else if (winLossString.includes('Tie') === true){
-            playerScore = playerScore + 0;
-            console.log(winLossString)
-        } else {
-            computerScore++;
-            console.log(winLossString);
-        }
-    }
+let singleRoundResults = document.createElement("div");
+let playerCounter = 0;
+let cpuCounter = 0;
 
-    //display winner
-    if (playerScore > computerScore) {
-        console.log(`You beat the computer! You scored ${playerScore} and the computer scored ${computerScore}.`);
+let announcement = document.createElement("div");
+
+/*create buttons, and add event listeners to be able to play*/
+const rock = document.querySelector('#rock');
+rock.addEventListener("click", function (e) {
+    singleRoundResults.textContent = playRound(this.textContent, getComputerChoice());
+    /*add to score based on result*/
+    if(singleRoundResults.textContent.includes('win') === true){
+        playerCounter++;
+    } else if (singleRoundResults.textContent.includes('lost') === true) {
+        cpuCounter++;
     } else {
-        console.log(`You lost to the computer! You scored ${playerScore} and the computer scored ${computerScore}.`)
+        playerCounter = playerCounter+0;
     }
-}
+    /*display the result of the round*/
+    buttons.appendChild(singleRoundResults);
+    /*append player's counter*/
+    playerScore.textContent = `You: ${playerCounter}`;
+    scoreContainer.appendChild(playerScore);
+    /*append cpu's counter*/
+    cpuScore.textContent = `Cpu: ${cpuCounter}`;
+    scoreContainer.appendChild(cpuScore);
+    /*determine the winner based on score*/
+    if (playerCounter === 5){
+        announcement.textContent = `You beat the computer! You scored ${playerCounter} and the computer scored ${cpuCounter}.`
+    } else if (cpuCounter === 5){
+        announcement.textContent = `You lost to the computer! You scored ${playerCounter} and the computer scored ${cpuCounter}.`
+    };
+    /* display winner */
+    buttons.appendChild(announcement);
+});
 
-playGame()
+const paper = document.querySelector('#paper');
+paper.addEventListener("click", function (e) {
+    singleRoundResults.textContent = playRound(this.textContent, getComputerChoice());
+    /*add to score based on result*/
+    if(singleRoundResults.textContent.includes('win') === true){
+        playerCounter++;
+    } else if (singleRoundResults.textContent.includes('lost') === true) {
+        cpuCounter++;
+    } else {
+        playerCounter = playerCounter+0;
+    }
+    /*display the result of the round*/
+    buttons.appendChild(singleRoundResults);
+    /*append player's counter*/
+    playerScore.textContent = `You: ${playerCounter}`;
+    scoreContainer.appendChild(playerScore);
+    /*append cpu's counter*/
+    cpuScore.textContent = `Cpu: ${cpuCounter}`;
+    scoreContainer.appendChild(cpuScore);
+    /*determine the winner based on score*/
+    if (playerCounter === 5){
+        announcement.textContent = `You beat the computer! You scored ${playerCounter} and the computer scored ${cpuCounter}.`
+    } else if (cpuCounter === 5){
+        announcement.textContent = `You lost to the computer! You scored ${playerCounter} and the computer scored ${cpuCounter}.`
+    };
+    /* display winner */
+    buttons.appendChild(announcement);
+});
+
+const scissors = document.querySelector('#scissors');
+scissors.addEventListener("click", function (e) {
+    singleRoundResults.textContent = playRound(this.textContent, getComputerChoice());
+    /*add to score based on result*/
+    if(singleRoundResults.textContent.includes('win') === true){
+        playerCounter++;
+    } else if (singleRoundResults.textContent.includes('lost') === true) {
+        cpuCounter++;
+    } else {
+        playerCounter = playerCounter+0;
+    }
+    /*display the result of the round*/
+    buttons.appendChild(singleRoundResults);
+    /*append player's counter*/
+    playerScore.textContent = `You: ${playerCounter}`;
+    scoreContainer.appendChild(playerScore);
+    /*append cpu's counter*/
+    cpuScore.textContent = `Cpu: ${cpuCounter}`;
+    scoreContainer.appendChild(cpuScore);
+    /*determine the winner based on score*/
+    if (playerCounter === 5){
+        announcement.textContent = `You beat the computer! You scored ${playerCounter} and the computer scored ${cpuCounter}.`
+    } else if (cpuCounter === 5){
+        announcement.textContent = `You lost to the computer! You scored ${playerCounter} and the computer scored ${cpuCounter}.`
+    };
+    /* display winner */
+    buttons.appendChild(announcement);
+});
